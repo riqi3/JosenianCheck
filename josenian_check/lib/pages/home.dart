@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:josenian_check/constants.dart';
-import 'package:josenian_check/models/events.dart';
+import 'package:josenian_check/models/event.dart';
 import 'package:josenian_check/providers/eventprovider.dart';
 import 'package:josenian_check/widgets/eventwidget.dart';
 import 'package:provider/provider.dart';
