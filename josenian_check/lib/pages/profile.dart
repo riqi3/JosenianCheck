@@ -13,6 +13,7 @@ class _UserProfileState extends State<UserProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: shadeBC1,
         title: Text(
           'Profile'
         ),
