@@ -50,7 +50,6 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
-      // bottomNavigationBar: BotNavigation(selectedIndex: pageIndex,),
     );
   }
 }
