@@ -1,3 +1,4 @@
+import 'package:camera_platform_interface/src/types/camera_description.dart';
 import 'package:flutter/material.dart';
 import 'package:josenian_check/constants.dart';
 import 'package:josenian_check/providers/classlistprovider.dart';
