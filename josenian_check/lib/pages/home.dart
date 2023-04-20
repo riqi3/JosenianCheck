@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:josenian_check/constants.dart';
+import 'package:josenian_check/widgets/BotNavigation.dart';
 import 'package:josenian_check/models/events.dart';
 import 'package:josenian_check/providers/eventprovider.dart';
 import 'package:josenian_check/widgets/eventwidget.dart';
@@ -13,10 +14,31 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
+
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 60, fontWeight: FontWeight.bold);
+
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+        Text(
+      'Index 1: DDDDDD',
+      style: optionStyle,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<EventProvider>(
+      appBar: AppBar(
+        title: Text(
+          'Homepage',
+        ),
+      ),
+            body: Consumer<EventProvider>(
         builder: (context, value, child) {
           return EventWidget(events: value.eventList);
         },
@@ -24,6 +46,7 @@ class _homeState extends State<home> {
       floatingActionButton: FloatingActionButton(onPressed: () {
         context.read<EventProvider>().add(Event(eventName: 'Test'));
       }),
+      bottomNavigationBar: BotNavigation(),
     );
   }
 }
