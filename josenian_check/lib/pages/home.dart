@@ -13,7 +13,7 @@ class _homeState extends State<home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: mainColor,
+        color: brandColor1,
       ),
     );
   }
