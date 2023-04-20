@@ -1,7 +1,9 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:josenian_check/models/events.dart';
+import 'package:josenian_check/models/event.dart';
+
+import '../models/student.dart';
 
 class EventProvider extends ChangeNotifier {
   final List<Event> _events = [];
@@ -26,6 +28,30 @@ class EventProvider extends ChangeNotifier {
 
   void remove(String id) {
     _events.removeAt(getIndex(id));
+    notifyListeners();
+  }
+
+  void addCollaborator(String id, Student student)
+  {
+    _events[getIndex(id)].addCollaborator(student);
+    notifyListeners();
+  }
+
+  void addStudent(String id, Student student)
+  {
+    _events[getIndex(id)].addStudent(student);
+    notifyListeners();
+  }
+
+  void removeCollaborator(String id, Student student)
+  {
+    _events[getIndex(id)].removeCollaborator(student);
+    notifyListeners();    
+  }
+
+  void removeStudent(String id, Student student)
+  {
+    _events[getIndex(id)].removeStudent(student);
     notifyListeners();
   }
 }
