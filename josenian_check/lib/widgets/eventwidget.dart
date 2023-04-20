@@ -90,9 +90,9 @@ class EventWidget extends StatelessWidget {
 }
 
 Widget emptyCard(BuildContext context) {
-  return SizedBox(
+  return const SizedBox(
     height: 200,
-    child: const Card(
+    child: Card(
       child: Text('There are no events'),
     ),
   );
