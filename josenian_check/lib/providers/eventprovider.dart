@@ -15,6 +15,11 @@ class EventProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool empty()
+  {
+    return _events.isEmpty;
+  }
+
   int getIndex(String id) {
     int index = _events.indexWhere((e) => e.id == id);
 
