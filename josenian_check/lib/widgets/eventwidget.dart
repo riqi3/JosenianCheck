@@ -6,6 +6,8 @@ import 'package:josenian_check/models/event.dart';
 import 'package:josenian_check/providers/eventprovider.dart';
 import 'package:provider/provider.dart';
 
+import 'eventinfo.dart';
+
 class EventWidget extends StatelessWidget {
   final UnmodifiableListView<Event> events;
   const EventWidget({super.key, required this.events});
@@ -23,7 +25,16 @@ class EventWidget extends StatelessWidget {
                     child: ListView(
                       children: events.map((e) {
                         return GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Consumer<EventProvider>(
+                                  builder: (context, value, child) {
+                                    return EventInfo(
+                                      event: e,
+                                    );
+                                  },
+                                )));
+                          },
                           child: Card(
                             child: Text(
                               e.eventName,

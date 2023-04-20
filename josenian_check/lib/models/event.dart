@@ -47,5 +47,9 @@ class Event {
     students.removeAt(index);
   }
   
+  void setList(List<Student> students)
+  {
+    this.students = students;
+  }
 }
 

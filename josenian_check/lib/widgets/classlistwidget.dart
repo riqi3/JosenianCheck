@@ -2,7 +2,6 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:josenian_check/models/classlist.dart';
-import 'package:josenian_check/models/student.dart';
 import 'package:josenian_check/providers/classlistprovider.dart';
 import 'package:josenian_check/widgets/rosterwidget.dart';
 import 'package:provider/provider.dart';
