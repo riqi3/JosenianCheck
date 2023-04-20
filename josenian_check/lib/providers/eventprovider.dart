@@ -59,4 +59,10 @@ class EventProvider extends ChangeNotifier {
     _events[getIndex(id)].removeStudent(student);
     notifyListeners();
   }
+
+  void addList(String id, List<Student> students)
+  {
+    _events[getIndex(id)].setList(students);
+    notifyListeners();
+  }
 }

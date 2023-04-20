@@ -2,7 +2,6 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:josenian_check/models/classlist.dart';
-import 'package:josenian_check/models/student.dart';
 import 'package:josenian_check/providers/classlistprovider.dart';
 import 'package:josenian_check/widgets/rosterwidget.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +14,7 @@ class ClassListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           context.read<ClassListProvider>().empty()
               ? emptyCard(context)
@@ -22,20 +22,25 @@ class ClassListWidget extends StatelessWidget {
                   height: 200,
                   child: Expanded(
                     child: ListView(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
                       children: classList.map((e) {
                         return GestureDetector(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
                                 builder: (context) =>
                                     Consumer<ClassListProvider>(
-                                      builder: (context, value, child) {
-                                        String id = value.getClassID(e);
-                                        return RosterWidget(
-                                            id: id,
-                                            className: value.getName(id),
-                                            students: value.getStudents(id));
-                                      },
-                                    )));
+                                  builder: (context, value, child) {
+                                    String id = value.getClassID(e);
+                                    return RosterWidget(
+                                        id: id,
+                                        className: value.getName(id),
+                                        students: value.getStudents(id));
+                                  },
+                                ),
+                              ),
+                            );
                           },
                           child: Card(
                             child: Text(
@@ -61,10 +66,22 @@ class ClassListWidget extends StatelessWidget {
 }
 
 Widget emptyCard(BuildContext context) {
-  return const SizedBox(
-    height: 200,
+  return Container(
+    width: MediaQuery.of(context).size.width,
     child: Card(
-      child: Text('There are no classes'),
+      color: Colors.transparent,
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      child: Text(
+        'There are no classes :^(',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 30,
+          color: Colors.black.withOpacity(
+            .5,
+          ),
+        ),
+      ),
     ),
   );
 }
@@ -72,48 +89,50 @@ Widget emptyCard(BuildContext context) {
 Future<void> addClass(BuildContext context) async {
   TextEditingController classNameController = TextEditingController();
   return showDialog(
-      context: context,
-      builder: ((context) {
-        return AlertDialog(
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10.0))),
-          title: const Text(
-            "Add Class",
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: Colors.deepPurple,
-            ),
+    context: context,
+    builder: ((context) {
+      return AlertDialog(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        title: const Text(
+          "Add Class",
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: Colors.deepPurple,
           ),
-          content: TextField(
-            controller: classNameController,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Input here',
-            ),
+        ),
+        content: TextField(
+          controller: classNameController,
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Input here',
           ),
-          actions: [
-            TextButton(
-                onPressed: (() {
-                  if (classNameController.text.isNotEmpty) {
-                    context
-                        .read<ClassListProvider>()
-                        .add(ClassList(className: classNameController.text));
-                    Navigator.pop(context);
-                  }
-                }),
-                child: const Text("Ok")),
-            TextButton(
-                onPressed: (() {
+        ),
+        actions: [
+          TextButton(
+              onPressed: (() {
+                if (classNameController.text.isNotEmpty) {
+                  context
+                      .read<ClassListProvider>()
+                      .add(ClassList(className: classNameController.text));
                   Navigator.pop(context);
-                }),
-                child: Text(
-                  "Cancel",
-                  style: TextStyle(
-                    color: Colors.red[200],
-                  ),
-                ))
-          ],
-        );
-      }));
+                }
+              }),
+              child: const Text("Ok")),
+          TextButton(
+            onPressed: (() {
+              Navigator.pop(context);
+            }),
+            child: Text(
+              "Cancel",
+              style: TextStyle(
+                color: Colors.red[200],
+              ),
+            ),
+          )
+        ],
+      );
+    }),
+  );
 }
