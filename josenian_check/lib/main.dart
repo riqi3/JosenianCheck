@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:josenian_check/pages/mainscreen.dart';
+import 'package:josenian_check/pages/professor/mainscreen.dart';
 import 'package:josenian_check/providers/classlistprovider.dart';
 import 'package:josenian_check/providers/eventprovider.dart';
 import 'package:provider/provider.dart';
 
-import 'pages/home.dart';
+import 'pages/professor/home.dart';
+import 'pages/login.dart';
 
 void main() {
   runApp(MultiProvider(
@@ -30,7 +31,7 @@ class JosenianCheck extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainScreen(),
+      home: const LoginScreen(),
     );
   }
 }

@@ -6,6 +6,8 @@ import 'package:josenian_check/providers/classlistprovider.dart';
 import 'package:josenian_check/widgets/rosterwidget.dart';
 import 'package:provider/provider.dart';
 
+import '../constants.dart';
+
 class ClassListWidget extends StatelessWidget {
   final UnmodifiableListView<ClassList> classList;
   const ClassListWidget({super.key, required this.classList});
@@ -56,6 +58,7 @@ class ClassListWidget extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         heroTag: 'AddClass',
+        backgroundColor: shadeBC1,
         onPressed: () {
           addClass(context);
         },

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
-import 'camera.dart';
+import '../../constants.dart';
 import 'home.dart';
-import 'profile.dart';
+import '../profile.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -46,6 +46,7 @@ class _MainScreenState extends State<MainScreen> {
       body:      pageList[pageIndex],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: shadeBC1,
         onPressed: () 
           {
                     _scanQR();
@@ -54,6 +55,8 @@ class _MainScreenState extends State<MainScreen> {
         child: const Icon(Icons.qr_code_scanner),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: shadeBC1,
+  unselectedItemColor: Colors.black.withOpacity(.5),
         currentIndex: pageIndex,
         onTap: (value) {
           setState(() {
@@ -61,6 +64,7 @@ class _MainScreenState extends State<MainScreen> {
           });
         },
         items: [
+          
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',

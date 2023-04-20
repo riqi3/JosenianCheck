@@ -37,9 +37,18 @@ class EventWidget extends StatelessWidget {
                                   },
                                 )));
                           },
-                          child: Card(
-                            child: Text(
-                              e.eventName,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Card(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
+                                child: Text(
+                                  e.eventName,
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         );
@@ -51,6 +60,7 @@ class EventWidget extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         heroTag: 'AddEvent',
+        backgroundColor: shadeBC1,
         onPressed: () {
           addEvent(context);
         },
