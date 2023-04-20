@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:josenian_check/constants.dart';
+import 'package:josenian_check/models/events.dart';
 import 'package:josenian_check/widgets/BotNavigation.dart';
 import 'package:josenian_check/models/events.dart';
 import 'package:josenian_check/providers/eventprovider.dart';
