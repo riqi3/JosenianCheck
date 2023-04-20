@@ -13,44 +13,49 @@ class ClassListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        context.read<ClassListProvider>().empty()
-            ? emptyCard(context)
-            : SizedBox(
-                height: 200,
-                child: Expanded(
-                  child: ListView(
-                    children: classList.map((e) {
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Consumer<ClassListProvider>(
-                                    builder: (context, value, child) {
-                                      String id = value.getClassID(e);
-                                      return RosterWidget(
-                                          id: id,
-                                          className: value.getName(id),
-                                          students: value.getStudents(id));
-                                    },
-                                  )));
-                        },
-                        child: Card(
-                          child: Text(
-                            e.name,
+    return Scaffold(
+      body: Column(
+        children: [
+          context.read<ClassListProvider>().empty()
+              ? emptyCard(context)
+              : SizedBox(
+                  height: 200,
+                  child: Expanded(
+                    child: ListView(
+                      children: classList.map((e) {
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    Consumer<ClassListProvider>(
+                                      builder: (context, value, child) {
+                                        String id = value.getClassID(e);
+                                        return RosterWidget(
+                                            id: id,
+                                            className: value.getName(id),
+                                            students: value.getStudents(id));
+                                      },
+                                    )));
+                          },
+                          child: Card(
+                            child: Text(
+                              e.name,
+                            ),
                           ),
-                        ),
-                      );
-                    }).toList(),
+                        );
+                      }).toList(),
+                    ),
                   ),
                 ),
-              ),
-        ElevatedButton(
-            onPressed: () {
-              addClass(context);
-            },
-            child: const Text('Add Class Roster'))
-      ],
+        ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        heroTag: 'AddClass',
+        onPressed: () {
+          addClass(context);
+        },
+        label: Text('Add Class'),
+      ),
     );
   }
 }
@@ -73,7 +78,7 @@ Future<void> addClass(BuildContext context) async {
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0))),
           title: const Text(
-            "Add Event",
+            "Add Class",
             style: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,

@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:josenian_check/constants.dart';
 import 'package:josenian_check/models/event.dart';
 import 'package:josenian_check/providers/eventprovider.dart';
 import 'package:provider/provider.dart';
@@ -11,31 +12,37 @@ class EventWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        context.read<EventProvider>().empty()
-            ? emptyCard(context)
-            : SizedBox(
-                height: 200,
-                child: Expanded(
-                  child: ListView(
-                    children: events.map((e) {
-                      return GestureDetector(
-                        onTap: () {},
-                        child: Card(
-                          child: Text(
-                            e.eventName,
+    return Scaffold(
+      body: Column(
+        children: [
+          context.read<EventProvider>().empty()
+              ? emptyCard(context)
+              : SizedBox(
+                  height: 200,
+                  child: Expanded(
+                    child: ListView(
+                      children: events.map((e) {
+                        return GestureDetector(
+                          onTap: () {},
+                          child: Card(
+                            child: Text(
+                              e.eventName,
+                            ),
                           ),
-                        ),
-                      );
-                    }).toList(),
+                        );
+                      }).toList(),
+                    ),
                   ),
                 ),
-              ),
-        ElevatedButton(onPressed: () {
+        ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        heroTag: 'AddEvent',
+        onPressed: () {
           addEvent(context);
-        }, child: const Text('Add Event'))
-      ],
+        },
+        label: Text('Add Event'),
+      ),
     );
   }
 
@@ -90,10 +97,16 @@ class EventWidget extends StatelessWidget {
 }
 
 Widget emptyCard(BuildContext context) {
-  return const SizedBox(
-    height: 200,
+  return Container(
+    width: MediaQuery.of(context).size.width,
     child: Card(
-      child: Text('There are no events'),
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      child: Text(
+        'There are no events :^(',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 30),
+      ),
     ),
   );
 }
