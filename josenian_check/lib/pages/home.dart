@@ -8,29 +8,21 @@ import 'package:josenian_check/widgets/eventwidget.dart';
 import 'package:provider/provider.dart';
 
 import '../models/event.dart';
+import 'profile.dart';
 
-class home extends StatefulWidget {
-  const home({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<home> createState() => _homeState();
+  State<Home> createState() => _HomeState();
 }
 
-class _homeState extends State<home> {
+class _HomeState extends State<Home> {
 
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 60, fontWeight: FontWeight.bold);
-
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-        Text(
-      'Index 1: DDDDDD',
-      style: optionStyle,
-    ),
+  int pageIndex = 0;
+  List<Widget> pageList = <Widget>[
+    Home(),
+    UserProfile(),
   ];
 
   @override
@@ -50,7 +42,6 @@ class _homeState extends State<home> {
       // floatingActionButton: FloatingActionButton(onPressed: () {
       //   context.read<EventProvider>().add(Event(eventName: 'Test'));
       // }),
-      bottomNavigationBar: BotNavigation(),
     );
   }
 }

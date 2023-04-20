@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:josenian_check/pages/mainscreen.dart';
 import 'package:josenian_check/providers/classlistprovider.dart';
 import 'package:josenian_check/providers/eventprovider.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,7 @@ class JosenianCheck extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const home(),
+      home: const MainScreen(),
     );
   }
 }
