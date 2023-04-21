@@ -11,6 +11,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: shadeBC1,
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -20,7 +21,15 @@ class LoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
+                width: 300,
+                height: 100,
+                child: Image.asset('assets/images/logo.png'),
+              ),
+              SizedBox(height: 50,),
+              Container(
+                
                 child: TextButton(
+                
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -31,12 +40,15 @@ class LoginScreen extends StatelessWidget {
                   },
                   child: Text(
                     'Login As Professor',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ),
               Container(
+                
                 color: brandColor1,
                 child: TextButton(
+                  
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -47,6 +59,7 @@ class LoginScreen extends StatelessWidget {
                   },
                   child: Text(
                     'Login As Student',
+                    style: TextStyle(color: Colors.white,),
                   ),
                 ),
               ),

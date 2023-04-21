@@ -50,6 +50,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           'Homepage',
         ),
         bottom: TabBar(
+          indicatorColor: Colors.white,
           controller: _controller,
           isScrollable: true,
           tabs: [
