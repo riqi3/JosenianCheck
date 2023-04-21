@@ -50,6 +50,7 @@ class _StudentHomeState extends State<StudentHome> with SingleTickerProviderStat
           'Homepage',
         ),
         bottom: TabBar(
+          indicatorColor: Colors.white,
           controller: _controller,
           isScrollable: true,
           tabs: [

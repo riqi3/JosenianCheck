@@ -102,14 +102,14 @@ Future<void> addClass(BuildContext context) async {
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
-            color: Colors.deepPurple,
+            color: shadeBC1,
           ),
         ),
         content: TextField(
           controller: classNameController,
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
-            labelText: 'Input here',
+            labelText: 'Class Code',
           ),
         ),
         actions: [
@@ -122,17 +122,22 @@ Future<void> addClass(BuildContext context) async {
                   Navigator.pop(context);
                 }
               }),
-              child: const Text("Ok")),
+              child: const Text(
+                "Ok",
+                style: TextStyle(
+                  color: shadeBC1,
+                ),
+              ),),
           TextButton(
             onPressed: (() {
               Navigator.pop(context);
             }),
             child: Text(
-              "Cancel",
-              style: TextStyle(
-                color: Colors.red[200],
+                "Cancel",
+                style: TextStyle(
+                  color: brandColor3,
+                ),
               ),
-            ),
           )
         ],
       );

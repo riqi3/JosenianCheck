@@ -30,18 +30,19 @@ class EventWidget extends StatelessWidget {
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => Consumer<EventProvider>(
-                                  builder: (context, value, child) {
-                                    return EventInfo(
-                                      event: e,
-                                    );
-                                  },
-                                )));
+                                      builder: (context, value, child) {
+                                        return EventInfo(
+                                          event: e,
+                                        );
+                                      },
+                                    )));
                           },
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Card(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 10),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
                                 child: Text(
                                   e.eventName,
                                   style: TextStyle(
@@ -103,7 +104,7 @@ class EventWidget extends StatelessWidget {
             style: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
-              color: Colors.deepPurple,
+              color: shadeBC1,
             ),
           ),
           content: TextField(
@@ -123,7 +124,12 @@ class EventWidget extends StatelessWidget {
                   Navigator.pop(context);
                 }
               }),
-              child: const Text("Ok"),
+              child: const Text(
+                "Ok",
+                style: TextStyle(
+                  color: shadeBC1,
+                ),
+              ),
             ),
             TextButton(
               onPressed: (() {

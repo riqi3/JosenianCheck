@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:josenian_check/providers/classlistprovider.dart';
 import 'package:josenian_check/providers/eventprovider.dart';
 import 'package:provider/provider.dart';

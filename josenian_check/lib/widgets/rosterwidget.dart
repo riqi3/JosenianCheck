@@ -110,7 +110,12 @@ class RosterWidget extends StatelessWidget {
             actions: [
               TextButton(
                   onPressed: (() {
-                    if (firstNameController.text.isNotEmpty) {
+                    if (studentNumController.text.isNotEmpty &&
+                        firstNameController.text.isNotEmpty &&
+                        middleNameController.text.isNotEmpty &&
+                        lastNameController.text.isNotEmpty &&
+                        programController.text.isNotEmpty &&
+                        degreeController.text.isNotEmpty) {
                       var newStudent = Student(
                           studentNo: studentNumController.text,
                           firstName: firstNameController.text,
